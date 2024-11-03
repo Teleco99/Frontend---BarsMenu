@@ -2,6 +2,18 @@
 
 Esta aplicación es el cliente multiplataforma para la **API de Cartas Digitales para Bares** (https://github.com/Teleco99/Backend---BarsMenuApi), diseñada para dispositivos Android y con soporte para una aplicación web. Proporciona una interfaz intuitiva para que los usuarios exploren y gestionen cartas digitales de productos de forma interactiva.
 
+### Editar Carta
+<img src="images/EditarMenu.png" alt="Editar carta" width="300"/>
+
+### Carta en Pantallas Pequeñas(sea Web o Android)
+<img src="images/MenuCompact.png" alt="Carta en móviles o pantallas pequeñas" width="300"/>
+
+### Subir Imagen de Producto (actualmente solo en Android)
+<img src="images/imagenSubida.png" alt="Subir imagen de producto" width="300"/>
+
+### Carta Pantallas Grandes (sea Web o Android)
+<img src="images/MenuExpanded.png" alt="Carta en tablet o pantallas grandes"/>
+
 ## Características
 
 - **Multiplataforma**: Desarrollada para Android y web, ofreciendo una experiencia de usuario coherente en ambas plataformas.
