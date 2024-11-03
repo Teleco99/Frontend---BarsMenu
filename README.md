@@ -5,14 +5,18 @@ Esta aplicación es el cliente multiplataforma para la **API de Cartas Digitales
 ### Editar Carta
 <img src="images/EditarMenu.png" alt="Editar carta" width="300"/>
 
+
 ### Carta en Pantallas Pequeñas(sea Web o Android)
 <img src="images/MenuCompact.png" alt="Carta en móviles o pantallas pequeñas" width="300"/>
+
 
 ### Subir Imagen de Producto (actualmente solo en Android)
 <img src="images/imagenSubida.png" alt="Subir imagen de producto" width="300"/>
 
+
 ### Carta Pantallas Grandes (sea Web o Android)
 <img src="images/MenuExpanded.png" alt="Carta en tablet o pantallas grandes"/>
+
 
 ## Características
 
