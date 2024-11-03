@@ -1,6 +1,6 @@
 package org.example.project.shared
 
-import io.github.aakira.napier.Napier
+//import io.github.aakira.napier.Napier
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.plugins.logging.LogLevel
@@ -11,7 +11,7 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 object NetworkUtils {
-    val httpClient = HttpClient() {
+    val httpClient = HttpClient {
         install(ContentNegotiation){
             json(json = Json {
                 ignoreUnknownKeys = true
@@ -19,6 +19,7 @@ object NetworkUtils {
             }, contentType = ContentType.Any)
         }
 
+        /*
         install(Logging) {
             logger = object: Logger {
                 override fun log(message: String) {
@@ -27,6 +28,7 @@ object NetworkUtils {
             }
             level = LogLevel.ALL
         }.also { initNapier() }
+        */
     }
 }
 

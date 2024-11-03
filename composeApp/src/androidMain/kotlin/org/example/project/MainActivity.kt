@@ -10,8 +10,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        // Realiza la inyección de dependencias de di.kt
+        initKoin()
+
         setContent {
-            App()
+            app()
         }
     }
 }
@@ -19,5 +22,5 @@ class MainActivity : ComponentActivity() {
 @Preview
 @Composable
 fun AppAndroidPreview() {
-    App()
+    app()
 }

@@ -15,7 +15,6 @@ import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -40,9 +39,10 @@ import org.example.project.domain.model.ProductModel
 import org.example.project.infraestructure.UIState
 import org.example.project.infraestructure.viewModel.MenuViewModel
 import org.example.project.infraestructure.viewModel.UserViewModel
+import org.example.project.shared.calculateWindowSize
 import org.koin.compose.viewmodel.koinViewModel
 
-class EditMenuView(private val windowSizeClass: WindowSizeClass) : Screen {
+class EditMenuView() : Screen {
     private var showDialog by mutableStateOf(false)
 
     @Composable
@@ -86,7 +86,7 @@ class EditMenuView(private val windowSizeClass: WindowSizeClass) : Screen {
 
                 // Botón para ver carta
                 Button(
-                    onClick = { navigator.push(MenuView(windowSizeClass)) },
+                    onClick = { navigator.push(MenuView()) },
                     modifier = Modifier
                         .weight(1f)
                         .padding(2.dp)
@@ -102,7 +102,7 @@ class EditMenuView(private val windowSizeClass: WindowSizeClass) : Screen {
                 is UIState.Success -> {
                     // Reseteamos logout a estado original para su posterior uso
                     userViewModel.logoutState.value = UIState.Disabled
-                    navigator.push(LoginUserView(windowSizeClass))
+                    navigator.push(LoginUserView())
                 }
             }
 
@@ -224,6 +224,7 @@ class EditMenuView(private val windowSizeClass: WindowSizeClass) : Screen {
             }
         }
 
+        val windowSizeClass = calculateWindowSize()
         val columnCount: Int = when (windowSizeClass.widthSizeClass) {
             WindowWidthSizeClass.Compact -> 1
             WindowWidthSizeClass.Medium -> 2
@@ -313,7 +314,7 @@ class EditMenuView(private val windowSizeClass: WindowSizeClass) : Screen {
                         .size(80.dp)
                         .weight(1f)
                         .background(Color.LightGray)
-                        .clickable() {
+                        .clickable {
                             // Lanzar vista para editar la imagen del producto
                             navigator.push(ImagePickerView(product.id, product.name, menuViewModel))
                         },

@@ -2,22 +2,12 @@ package org.example.project.infraestructure.view
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -32,10 +22,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import cafe.adriel.voyager.core.screen.Screen
@@ -50,9 +41,10 @@ import org.example.project.domain.model.MenuModel
 import org.example.project.domain.model.ProductModel
 import org.example.project.infraestructure.UIState
 import org.example.project.infraestructure.viewModel.MenuViewModel
+import org.example.project.shared.calculateWindowSize
 import org.koin.compose.viewmodel.koinViewModel
 
-class MenuView(private val windowSizeClass: WindowSizeClass) : Screen {
+class MenuView() : Screen {
     @Composable
     override fun Content() {
         val menuViewModel: MenuViewModel = koinViewModel()
@@ -130,6 +122,8 @@ class MenuView(private val windowSizeClass: WindowSizeClass) : Screen {
 
             menus.forEach { menu ->
                 item {
+                    val windowSizeClass = calculateWindowSize()
+                    println("windowSize: $windowSizeClass")
                     when (windowSizeClass.widthSizeClass) {
                         WindowWidthSizeClass.Compact -> menuItemCompact(menu)
                         WindowWidthSizeClass.Medium -> menuItemCompact(menu)
@@ -163,18 +157,25 @@ class MenuView(private val windowSizeClass: WindowSizeClass) : Screen {
             val columnCount = 3
 
             // Mostrar los productos en filas
-            menu.products.chunked(columnCount).forEachIndexed { index, rowItems ->
+            menu.products.chunked(columnCount).forEach{ rowItems ->
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
                 ) {
+                    println("row")
                     rowItems.forEach { product ->
+                        println("rowItem")
                         Box(
                             modifier = Modifier
                                 .weight(1f)
                                 .padding(8.dp)
-                                //.border(1.dp, Color.LightGray, RectangleShape)
+                                .shadow(
+                                    elevation = 6.dp,
+                                    shape = MaterialTheme.shapes.medium
+                                )
+                                .offset(x = (-2).dp, y = (-4).dp) // Desplaza la sombra para simularla en la parte inferior y derecha
+                                .background(Color.White, shape = MaterialTheme.shapes.medium) // Fondo y forma de la tarjeta
                         ) {
                             productItem(product)
                         }

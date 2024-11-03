@@ -29,7 +29,7 @@ import org.example.project.infraestructure.UIState
 import org.example.project.infraestructure.viewModel.UserViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
-class LoginUserView(private val windowSizeClass: WindowSizeClass) : Screen {
+class LoginUserView() : Screen {
 
     @Composable
     override fun Content(){
@@ -81,7 +81,7 @@ class LoginUserView(private val windowSizeClass: WindowSizeClass) : Screen {
                 is UIState.Success<AuthModel> -> {
                     // Reseteamos login a su estado original para usarlo en caso de logout
                     userViewModel.loginState.value = UIState.Disabled
-                    navigator.push(EditMenuView(windowSizeClass))
+                    navigator.push(EditMenuView())
                 }
                 UIState.Disabled -> {}
             }

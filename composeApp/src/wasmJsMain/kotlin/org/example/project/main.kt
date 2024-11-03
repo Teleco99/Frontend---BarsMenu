@@ -6,7 +6,11 @@ import kotlinx.browser.document
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
+
+    // Realiza la inyección de dependencias de di.kt
+    initKoin()
+
     ComposeViewport(document.body!!) {
-        App()
+        app()
     }
 }

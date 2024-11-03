@@ -16,13 +16,9 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.KoinContext
 import org.koin.compose.koinInject
 
-
 @Composable
 @Preview
-fun App() {
-
-    // Realiza la inyección de dependencias de di.kt
-    initKoin()
+fun app() {
 
     // Inyecta el singleton ImageLoader
     // TODO borrar .logger en producción
@@ -33,10 +29,6 @@ fun App() {
             .build()
     }
 
-    // Inyecta el tamaño de pantalla
-    val windowSizeClass = calculateWindowSize()
-    println("calculateWindowSize: ${windowSizeClass.toString()}")
-
     // Setea instancia de Koin a contexto de Compose
     KoinContext {
         MaterialTheme {
@@ -44,13 +36,13 @@ fun App() {
 
             // Si no hay token, navega a login
             if (authModel.token.isEmpty()) {
-                Navigator(screen = LoginUserView(windowSizeClass)) { navigator ->
+                Navigator(screen = LoginUserView()) { navigator ->
                     SlideTransition(navigator)
                 }
             }
             // Si hay token navega al home del rol correspondiente
             else {
-                Navigator(screen = EditMenuView(windowSizeClass)) { navigator ->
+                Navigator(screen = EditMenuView()) { navigator ->
                     SlideTransition(navigator)
                 }
             }

@@ -26,6 +26,7 @@ kotlin {
                         add(projectDirPath)
                     }
                 }
+                devtool = "source-map"
             }
         }
         binaries.executable()
@@ -74,7 +75,7 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.negotiation)
             implementation(libs.ktor.client.logging)
-            implementation(libs.napier.log)
+            //implementation(libs.napier.log)
             implementation(libs.kotlin.serialization)
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.transitions)

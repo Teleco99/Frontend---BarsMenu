@@ -34,12 +34,10 @@ import kotlinproject.composeapp.generated.resources.ic_camera
 import kotlinproject.composeapp.generated.resources.ic_error_dialog
 import kotlinproject.composeapp.generated.resources.ic_images
 import org.jetbrains.compose.resources.DrawableResource
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
-fun ImageSourceOptionDialog(
+fun imageSourceOptionDialog(
     onDismissRequest: () -> Unit,
     onGalleryRequest: () -> Unit = {},
     onCameraRequest: () -> Unit = {}
@@ -92,9 +90,8 @@ fun ImageSourceOptionDialog(
     }
 }
 
-@OptIn(ExperimentalResourceApi::class)
 @Composable
-fun AlertMessageDialog(
+fun alertMessageDialog(
     title: String,
     message: String? = null,
     resource: DrawableResource? = Res.drawable.ic_error_dialog,

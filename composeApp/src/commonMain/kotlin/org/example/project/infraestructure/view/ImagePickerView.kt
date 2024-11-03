@@ -96,7 +96,7 @@ class ImagePickerView(
             }
 
             if (imageSourceOptionDialog) {
-                ImageSourceOptionDialog(onDismissRequest = {
+                imageSourceOptionDialog(onDismissRequest = {
                     imageSourceOptionDialog = false
                 }, onGalleryRequest = {
                     imageSourceOptionDialog = false
@@ -131,7 +131,7 @@ class ImagePickerView(
             }
 
             if (permissionRationalDialog) {
-                AlertMessageDialog(title = "Permission Required",
+                alertMessageDialog(title = "Permission Required",
                     message = "To set your profile picture, please grant this permission. You can manage permissions in your device settings.",
                     positiveButtonText = "Settings",
                     negativeButtonText = "Cancel",
