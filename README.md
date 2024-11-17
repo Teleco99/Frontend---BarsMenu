@@ -35,12 +35,12 @@ Esta aplicación es el cliente multiplataforma para la **API de Cartas Digitales
 - **Coil**: Carga y cacheo de imágenes.
 - **Jetpack Compose**: Construcción de UI declarativa y responsiva.
 
-## Próximas Mejoras
+## Notas de versión
 
-- **Carga de Imágenes desde Aplicación Web**: Se usará la API de DOM para cargarlas en la aplicación y mandarlas al servidor.
-- **Implementación de Caché en el Repositorio**: Se evitarán peticiones recurrentes a la API, reduciendo la carga en el servidor mediante almacenamiento en caché de datos. Esto mejorará la eficiencia y la velocidad de la aplicación.
-- **Optimización de Peticiones de Imágenes**: Añadir un campo en la base de datos para indicar si un producto tiene imagen. De esta forma, solo se realizarán peticiones al servidor para descargar imágenes cuando sea necesario, ahorrando recursos y tiempo de carga.
-- **Mejoras Visuales en la Interfaz**: Se optimizará la apariencia y el diseño de la interfaz de usuario para ofrecer una experiencia más atractiva e intuitiva.
-- **Sistema de Pedido Online**: Implementación de un sistema para que los comensales puedan realizar pedidos directamente desde la carta digital.
-- **Implementación de Códigos de Test**: Añadir cobertura de pruebas a las distintas capas de la aplicación para facilitar la escalabilidad y la detección temprana de errores, mejorando así la calidad y el mantenimiento del código.
-- **Corrección de Bugs**.
+- **Refactorización de casos de uso para nuevas relaciones del backend (https://github.com/Teleco99/Backend---BarsMenuApi)**: Adaptados para integrarse con los cambios estructurales en las entidades del backend.
+
+- **Soporte para picker de imágenes en aplicación web (WASM)**: Permite seleccionar imágenes directamente desde la interfaz web.
+
+- **Caché para evitar peticiones recurrentes**: Mejora el rendimiento al almacenar resultados previamente obtenidos.
+
+- **Comprobación de existencia de imágenes de productos con nuevo campo en BD (https://github.com/Teleco99/Backend---BarsMenuApi)**: Se optimizan recursos al evitar solicitudes innecesarias al servidor.
